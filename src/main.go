@@ -11,9 +11,9 @@ import (
 func main() {
 	var baseFlag = flag.String("b", "GBP", "your starting currency code")
 	var destFlag = flag.String("d", "GBP", "your destination currency code")
-	var conFlag = flag.String("c", "n", "do you wish to convert money?")
+	var conFlag = flag.String("c", "0.00", "the amount you wish to convert")
 	flag.Parse()
-	
+
 	if *destFlag == *baseFlag {
 		os.Exit(0)
 	}
@@ -30,7 +30,7 @@ func main() {
 
 	if int(money) > 0 {
 
-		fmt.Printf("%.2f \n", calcChange(money, rate))
+		fmt.Printf("You will get %.2f %s\n", calcChange(money, rate), DestCurrency)
 
 	}
 
