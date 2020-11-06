@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"strings"
+	"strconv"
 )
 
 func main() {
@@ -11,6 +12,8 @@ func main() {
 	var destFlag = flag.String("d", "EUR", "your destination currency code")
 	var conFlag = flag.String("c", "n", "do you wish to convert money?")
 	flag.Parse()
+	money, _ := strconv.ParseFloat(*conFlag, 64)
+
 
 	var baseCurrerncy, DestCurrency string
 	var baseCurrerncyP *string = &baseCurrerncy
@@ -21,11 +24,8 @@ func main() {
 
 	rate := getRate(baseCurrerncy, DestCurrency)
 
-	if *conFlag == "y" {
-		var money float64
-		fmt.Println("How much money do you want to change?")
-
-		fmt.Scanln(&money)
+	if int(money) > 0 {
+	
 		fmt.Printf("%.2f \n", calcChange(money, rate))
 
 	}
