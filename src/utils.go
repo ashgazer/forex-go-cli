@@ -39,8 +39,6 @@ func getXURL(baseCurrency string, destCurrency string) string {
 	params.Add("symbols", destCurrency)
 	params.Add("rtype", "fpy")
 	base.RawQuery = params.Encode()
-	fmt.Println(base.String())
-
 	return base.String()
 }
 
@@ -54,15 +52,18 @@ func getRate(baseCurrency string, destCurrency string) float64 {
 
 	defer resp.Body.Close()
 	bodyBytes, _ := ioutil.ReadAll(resp.Body)
-	fmt.Println(string(bodyBytes))
 
 	// var rateStruct Rate
 	var data map[string]interface{}
 	json.Unmarshal(bodyBytes, &data)
 	rates := data["rates"].(map[string]interface{})
 	rate := rates[destCurrency].(float64)
-	fmt.Printf("the conversion for %s to %s is %f", baseCurrency, destCurrency, rate)
+	fmt.Printf("the conversion for %s to %s is %f. :-)\n", baseCurrency, destCurrency, rate)
 
 	return rate
 }
 
+func calcChange(money float64, rate float64) float64 {
+	return money * rate
+
+}
