@@ -3,10 +3,10 @@ package main
 import (
 	"flag"
 	"fmt"
+	"github.com/ashgazer/forexgocli/utils"
 	"os"
 	"strconv"
 	"strings"
-	"github.com/ashgazer/forexgocli/utils"
 )
 
 func main() {
