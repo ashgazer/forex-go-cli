@@ -1,4 +1,5 @@
-package main
+package utils
+
 
 import (
 	"encoding/json"
@@ -42,7 +43,8 @@ func getXURL(baseCurrency string, destCurrency string) string {
 	return base.String()
 }
 
-func getRate(baseCurrency string, destCurrency string) float64 {
+// GetRate gets rates between two currencies 
+func GetRate(baseCurrency string, destCurrency string) float64 {
 	resp, err := http.Get(getXURL(baseCurrency, destCurrency))
 
 	if err != nil {
@@ -63,7 +65,8 @@ func getRate(baseCurrency string, destCurrency string) float64 {
 	return rate
 }
 
-func calcChange(money float64, rate float64) float64 {
+// CalcChange used to calculate the change in currency
+func CalcChange(money float64, rate float64) float64 {
 	return money * rate
 
 }

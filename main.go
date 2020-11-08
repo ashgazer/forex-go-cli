@@ -6,6 +6,7 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"github.com/ashgazer/forexgocli/utils"
 )
 
 func main() {
@@ -26,11 +27,11 @@ func main() {
 	*DestCurrencyP = strings.ToUpper(*destFlag)
 	*baseCurrerncyP = strings.ToUpper(*baseFlag)
 
-	rate := getRate(baseCurrerncy, DestCurrency)
+	rate := utils.GetRate(baseCurrerncy, DestCurrency)
 
 	if int(money) > 0 {
 
-		fmt.Printf("You will get %.2f %s\n", calcChange(money, rate), DestCurrency)
+		fmt.Printf("You will get %.2f %s\n", utils.CalcChange(money, rate), DestCurrency)
 
 	}
 
