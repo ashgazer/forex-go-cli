@@ -6,8 +6,8 @@ import (
 	"io/ioutil"
 	"math"
 	"net/http"
-	"os"
 	"net/url"
+	"os"
 )
 
 // Rate struct
@@ -59,24 +59,22 @@ func GetRate(baseCurrency string, destCurrency string) float64 {
 		fmt.Printf("%s", err)
 	}
 
-
 	// var rateStruct Rate
 	var data map[string]interface{}
 	json.Unmarshal(bodyBytes, &data)
 	//rates := data["rates"].(map[string]interface{})
 	if rates, ok := data["rates"].(map[string]interface{}); ok {
-	rate := rates[destCurrency].(float64)
-	fmt.Printf("the conversion for %s to %s is %f. :-)\n", baseCurrency, destCurrency, rate)
-	return rate
-	
+		rate := rates[destCurrency].(float64)
+		fmt.Printf("the conversion for %s to %s is %f. :-)\n", baseCurrency, destCurrency, rate)
+		return rate
+
 	} else {
 		fmt.Printf("%v", data["error"])
 		os.Exit(1)
 	}
-	
+
 	return 0.0
 
-	
 }
 
 // CalcChange used to calculate the change in currency
