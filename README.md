@@ -7,7 +7,7 @@ To build from source please run the following command this will create the comma
 
 
 
-How to run once build
+How to run once built
 
 See conversion rate
 
@@ -23,6 +23,6 @@ See conversation rate plus amount that is exchanged (-c)
 * -b Three letter base currency you wish to convert from
 * -c [optional] The value of money you wish to convert
 
-if you have go install you can run by going into the src folder.
+if you have go installed you can run by going into the root folder.
 
 `go run *.go -b GBP -d TRY -c 97`
